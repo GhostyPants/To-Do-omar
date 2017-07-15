@@ -1,0 +1,103 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.container .titulo{
+  font-size: 2em;
+  display: block;
+  width: 70%;
+  margin: auto;
+  position: relative;
+}
+
+.container .titulo::after{
+  content: '';
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  border-bottom: 1px solid #ccc; 
+
+}
+
+.container .myForm{
+  text-align: center;
+  color: #1abc9c;
+  /* background-color: #e74c3c; */
+  border-radius: 3px;
+  width: 70%;
+  position: relative;
+  margin: 50px auto 0px auto;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.container .myForm .inputGroup{
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.container .myForm .inputGroup input{
+  width: 95%;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  padding: 10px 10px 3px 3px;
+  transition: all .3s ease-in-out;
+}
+
+.container .myForm .inputGroup .taskDescription{
+  width: 95%;
+  max-width: 720px;
+  border: none;
+  border-bottom: 2px solid white;
+  padding: 0px 0px -10px 3px;
+  background: transparent;
+  outline: none;
+  transition: all .3s ease-in-out;
+}
+
+.container .myForm .inputGroup label{
+  position: absolute;
+  left: 20px;
+  color: #1abc9c;
+  top: 13px;
+  cursor: text;
+  transition: all .2s ease-in-out;
+}
+
+.container .myForm .inputGroup input:focus + label{
+  top: -4px;
+  font-size: 12px;
+
+}
+
+.container .myForm .inputGroup .taskDescription:focus + label{
+  top: -14px;
+  font-size: 12px;
+}
+
+.container .myForm .inputGroup input:focus, .container .myForm .inputGroup .taskDescription:focus{
+  border-bottom: #1abc9c 2px solid;
+}
+
+.container .myForm .button{
+  border: none;
+  background: #1abc9c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+
+.container .taskSubmited{
+  width: 70%;
+  /* background-color: #7f8c8d; */
+  margin: auto;
+  /* padding: 10px; */
+}
+
+.container .taskSubmited .task h3, p{
+  margin-bottom: 25px;
+}
