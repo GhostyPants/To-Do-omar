@@ -1,12 +1,26 @@
-document.getElementById('myForm').addEventListener('submit', saveTask);
+var taskNameInput = document.getElementById('taskName');
+var taskDescriptionInput = document.getElementById('taskDescription');
+var myForm = document.getElementById('myForm');
+
+myForm.addEventListener('submit', saveTask);
 
 function saveTask(e) {
-    var taskName = document.getElementById('taskName').value;
-    var taskDescription = document.getElementById('taskDescription').value;
+    e.preventDefault();//Previene que se actualize la pagina
+
+    var taskNameValue = taskNameInput.value;
+    var taskDescriptionValue = taskDescriptionInput.value;
+
+    myForm.reset();
+
+    
+    if (!taskNameValue || !taskDescriptionValue){
+        alert('Fill the form')
+        return false;
+    }
 
     var task = {
-        name: taskName,
-        description: taskDescription
+        name: taskNameValue,
+        description: taskDescriptionValue
     }
 
     if (localStorage.getItem('Tasks') === null){
@@ -20,7 +34,6 @@ function saveTask(e) {
     }
 
     fetchTasks();
-    e.preventDefault();
 }
 
 function fetchTasks(){
@@ -37,7 +50,7 @@ function fetchTasks(){
                                                 '<div class="well task">'+
                                                     '<h2>'+name+'</h2>'+
                                                     '<p>'+description+'</p>'+
-                                                    '<button id="btnDelete" class="btn btn-success" onclick="deleteTask(\''+description+'\')">Complete</button>'+
+                                                    '<button id="btnDelete" class="btn btn-success" onclick="deleteTask(\''+name+'\')">Complete</button>'+
                                                 '</div>'+
                                             '</div>'+
                                         '</div>'
@@ -45,10 +58,10 @@ function fetchTasks(){
     localStorage.setItem('Tasks', JSON.stringify(tasks));
 }
 
-function deleteTask(description) {
+function deleteTask(name) {
     tasks = JSON.parse(localStorage.getItem('Tasks'));
     for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].description == description){
+        if (tasks[i].name == name){
             tasks.splice(i, 1);
         }
     }
